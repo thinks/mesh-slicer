@@ -25,7 +25,6 @@
 #include "ObjRead.hpp"
 #include "ObjWrite.hpp"
 
-
 #include <nDjinn.hpp>
 #include <thx.hpp>
 #include <cstdlib>
@@ -37,6 +36,7 @@
 
 using std::unique_ptr;
 using std::vector;
+using std::string;
 
 // -----------------------------------------------------------------------------
 
@@ -86,6 +86,11 @@ int dragStartY = 0;
 int dragLastX = 0;
 int dragLastY = 0;
 int wheelLastPos = 0;
+
+std::string const shaderPath = "D:/GitHub/mesh-slicer/shaders";
+//std::string const meshPath = "D:/GitHub/mesh_slicer/data/dragon.obj";
+//std::string const meshPath = "D:/GitHub/mesh_slicer/data/perfexion.obj";
+std::string const meshPath = "D:/GitHub/mesh-slicer/data/teapot.obj";
 
 // -----------------------------------------------------------------------------
 
@@ -545,9 +550,9 @@ initMeshShader() {
 
   meshShader.program.reset(new ShaderProgram);
   initShader(*meshShader.program,
-             "D:/code/demo/mesh_slicer/mesh.vs",
-             "D:/code/demo/mesh_slicer/mesh.gs",
-             "D:/code/demo/mesh_slicer/mesh.fs");
+             shaderPath + "/mesh.vs",
+             shaderPath + "/mesh.gs",
+             shaderPath + "/mesh.fs");
 
   // Set up uniform buffers.
 
@@ -603,9 +608,9 @@ initSlicePlaneShader() {
 
   slicePlaneShader.program.reset(new ShaderProgram);
   initShader(*slicePlaneShader.program, 
-             "D:/code/demo/mesh_slicer/slicePlane.vs",
+             shaderPath + "/slicePlane.vs",
              "",
-             "D:/code/demo/mesh_slicer/slicePlane.fs");
+             shaderPath + "/slicePlane.fs");
 
   // Set up uniform buffers.
 
@@ -656,9 +661,9 @@ initContourPlaneShader() {
 
   contourPlaneShader.program.reset(new ShaderProgram);
   initShader(*contourPlaneShader.program, 
-             "D:/code/demo/mesh_slicer/contourPlane.vs",
+             shaderPath + "/contourPlane.vs",
              "",
-             "D:/code/demo/mesh_slicer/contourPlane.fs");
+             shaderPath + "/contourPlane.fs");
 
   // Set up uniform buffers.
 
@@ -714,9 +719,9 @@ initSliceMeshShader() {
 
   sliceMeshShader.program.reset(new ShaderProgram);
   initShader(*sliceMeshShader.program, 
-             "D:/code/demo/mesh_slicer/sliceMesh.vs",
-             "D:/code/demo/mesh_slicer/sliceMesh.gs",
-             "D:/code/demo/mesh_slicer/sliceMesh.fs");
+             shaderPath + "/sliceMesh.vs",
+             shaderPath + "/sliceMesh.gs",
+             shaderPath + "/sliceMesh.fs");
 
   // Set up uniform buffers.
 
@@ -766,9 +771,9 @@ initSliceLinesShader() {
 
   sliceLinesShader.program.reset(new ShaderProgram);
   initShader(*sliceLinesShader.program, 
-             "D:/code/demo/mesh_slicer/sliceLines.vs",
+             shaderPath + "/sliceLines.vs",
              "",
-             "D:/code/demo/mesh_slicer/sliceLines.fs");
+             shaderPath + "/sliceLines.fs");
 
   // Set up uniform buffers.
 
@@ -848,8 +853,10 @@ initMeshGeometry(std::string const& fileName) {
 
   for (size_t i = 0; i < meshVertices.size(); ++i) {
     for (size_t j = 0; j < 3; ++j) {
-      meshGeometry.min[j] = min<GLfloat>(meshGeometry.min[j], meshVertices[i][j]);
-      meshGeometry.max[j] = max<GLfloat>(meshGeometry.max[j], meshVertices[i][j]);
+      meshGeometry.min[j] = 
+        min<GLfloat>(meshGeometry.min[j], meshVertices[i][j]);
+      meshGeometry.max[j] = 
+        max<GLfloat>(meshGeometry.max[j], meshVertices[i][j]);
     }
   }
 
@@ -1404,10 +1411,7 @@ main(int argc, char *argv[])
     glfwSetMouseButtonCallback(mouseButtonCallback);
     glfwSetMouseWheelCallback(mouseWheelCallback);
 
-    //initMeshGeometry("D:/code/demo/mesh_slicer/data/dragon.obj");
-    //initMeshGeometry("D:/code/demo/mesh_slicer/data/teapot.obj");
-    initMeshGeometry("D:/code/demo/mesh_slicer/data/perfexion.obj");
-
+    initMeshGeometry(meshPath);
     initSceneCamera();
     initSliceCamera();
     initSlicePlaneGeometry();
