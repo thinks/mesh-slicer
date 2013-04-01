@@ -55,7 +55,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>D:\code\demo\external\glfw-2.7.2\include;D:\code\demo\external\glew-1.7.0\include;$(THX_PATH)\include;$(NDJINN_PATH)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(GLEW_PATH)\include;$(GLFW_PATH)\include;$(THX_PATH)\include;$(NDJINN_PATH)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -85,6 +85,20 @@
     <ClInclude Include="VertexAttribSize.hpp" />
     <ClInclude Include="VertexAttribType.hpp" />
     <ClInclude Include="Viewport.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\contourPlane.fs" />
+    <None Include="shaders\contourPlane.vs" />
+    <None Include="shaders\mesh.fs" />
+    <None Include="shaders\mesh.gs" />
+    <None Include="shaders\mesh.vs" />
+    <None Include="shaders\sliceLines.fs" />
+    <None Include="shaders\sliceLines.vs" />
+    <None Include="shaders\sliceMesh.fs" />
+    <None Include="shaders\sliceMesh.gs" />
+    <None Include="shaders\sliceMesh.vs" />
+    <None Include="shaders\slicePlane.fs" />
+    <None Include="shaders\slicePlane.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

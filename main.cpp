@@ -5,7 +5,8 @@
 //
 // -----------------------------------------------------------------------------
 
-#define GLEW_STATIC
+#define GLEW_STATIC // TODO: should be in project settings!
+
 #include <GL/glew.h>
 #include <GL/glfw.h>
 #include "VertexAttribSize.hpp"
@@ -1215,9 +1216,9 @@ sliceMeshCpu() {
 
     // Edge0 lies in plane. Output edge0 as a line.
     if (d0 == 0.f && d1 == 0.f) {
-	    gl_Position = /*projectionMatrix*/esx0;
+      gl_Position = /*projectionMatrix*/esx0;
       EmitVertex();
-	    gl_Position = /*projectionMatrix*/esx1;
+      gl_Position = /*projectionMatrix*/esx1;
       EmitVertex();
       EndPrimitive();
       continue;//return;
@@ -1225,9 +1226,9 @@ sliceMeshCpu() {
 
     // Edge1 lies in plane. Output edge1 as a line.
     if (d1 == 0.f && d2 == 0.f) {
-	    gl_Position = /*projectionMatrix*/esx1;
+      gl_Position = /*projectionMatrix*/esx1;
       EmitVertex();
-	    gl_Position = /*projectionMatrix*/esx2;
+      gl_Position = /*projectionMatrix*/esx2;
       EmitVertex();
       EndPrimitive();
       continue;//return;
@@ -1235,9 +1236,9 @@ sliceMeshCpu() {
 
     // Edge2 lies in plane. Output edge2 as a line.
     if (d2 == 0.f && d0 == 0.f) {
-	    gl_Position = /*projectionMatrix*/esx2;
+      gl_Position = /*projectionMatrix*/esx2;
       EmitVertex();
-	    gl_Position = /*projectionMatrix*/esx0;
+      gl_Position = /*projectionMatrix*/esx0;
       EmitVertex();
       EndPrimitive();
       continue;//return;
@@ -1245,7 +1246,7 @@ sliceMeshCpu() {
 
     // Vertex0 lies in the plane.
     if (d0 == 0.f) {
-	    gl_Position = /*projectionMatrix*/esx0;
+      gl_Position = /*projectionMatrix*/esx0;
       EmitVertex();
       EmitVertex();
       EndPrimitive();
@@ -1254,7 +1255,7 @@ sliceMeshCpu() {
 
     // Vertex1 lies in the plane.
     if (d1 == 0.f) {
-	    gl_Position = /*projectionMatrix*/esx1;
+      gl_Position = /*projectionMatrix*/esx1;
       EmitVertex();
       EmitVertex();
       EndPrimitive();
@@ -1263,7 +1264,7 @@ sliceMeshCpu() {
 
     // Vertex2 lies in the plane.
     if (d2 == 0.f) {
-	    gl_Position = /*projectionMatrix*/esx2;
+      gl_Position = /*projectionMatrix*/esx2;
       EmitVertex();
       EmitVertex();
       EndPrimitive();
@@ -1372,11 +1373,11 @@ main(int argc, char *argv[])
     // Open an OpenGL window. Creates an OpenGL context.
     glfwSetWindowTitle("Mesh Slicer");
     glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); // 4 x AA
-	  glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 4);
-	  glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 2);
-	  glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE/*GLFW_OPENGL_COMPAT_PROFILE*/);
-	  GLFWvidmode vm;
-	  glfwGetDesktopMode(&vm);
+    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 4);
+    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 2);
+    glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE/*GLFW_OPENGL_COMPAT_PROFILE*/);
+    GLFWvidmode vm;
+    glfwGetDesktopMode(&vm);
     int const ALPHA_BITS = 0;
     int const DEPTH_BITS = 0;
     int const STENCIL_BITS = 0;

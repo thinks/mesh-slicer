@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{5111b1f2-6dca-4bf2-8db7-f86a3d335bbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,5 +71,43 @@
     <ClInclude Include="ObjWrite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\contourPlane.fs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\contourPlane.vs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\mesh.fs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\mesh.gs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\mesh.vs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\sliceLines.fs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\sliceLines.vs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\sliceMesh.fs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\sliceMesh.gs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\sliceMesh.vs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\slicePlane.fs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\slicePlane.vs">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
